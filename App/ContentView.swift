@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var loginShow : FirebaseViewModel
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        return Group{
+            if loginShow.show{
+                Home()
+                    .edgesIgnoringSafeArea(.all)
+                    .preferredColorScheme(.dark)
+            }else{
+                Login()
+            }
         }
-        .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
